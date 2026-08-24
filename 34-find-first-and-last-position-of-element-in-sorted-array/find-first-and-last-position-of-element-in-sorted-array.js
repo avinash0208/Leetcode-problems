@@ -29,10 +29,10 @@ var searchRange = function(nums, target) {
     };
 
     const firstPos = findBound(true);
-    // // If the first position is -1, the target doesn't exist in the array
-    // if (firstPos === -1) {
-    //     return [-1, -1];
-    // }
+    // If the first position is -1, the target doesn't exist in the array
+    if (firstPos === -1) {
+        return [-1, -1];
+    }
     
     const lastPos = findBound(false);
     return [firstPos, lastPos];
