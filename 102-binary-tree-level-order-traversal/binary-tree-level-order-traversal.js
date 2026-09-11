@@ -10,21 +10,36 @@
  * @param {TreeNode} root
  * @return {number[][]}
  */
+// var levelOrder = function(root) {
+//     if(!root) return []
+//     let q=[root]
+//     let ans=[]
+
+//     while(q.length){
+//         let levelArray =[]
+//         let levelSize = q.length
+//         for(let i=0;i<levelSize;i++){
+//             let curr = q.shift();
+//             curr.left && q.push(curr.left)
+//             curr.right && q.push(curr.right)
+//             levelArray.push(curr.val)
+//         }
+//         ans.push(levelArray)
+//     }
+//     return ans
+// };
+
+// Recursive approach
 var levelOrder = function(root) {
     if(!root) return []
-    let q=[root]
     let ans=[]
 
-    while(q.length){
-        let levelArray =[]
-        let levelSize = q.length
-        for(let i=0;i<levelSize;i++){
-            let curr = q.shift();
-            curr.left && q.push(curr.left)
-            curr.right && q.push(curr.right)
-            levelArray.push(curr.val)
-        }
-        ans.push(levelArray)
+    let traversal=(curr,level)=>{
+        if(!ans[level]) ans[level]=[]
+        ans[level].push(curr.val)
+        curr.left && traversal(curr.left, level+1)
+        curr.right && traversal(curr.right, level+1)
     }
+    traversal(root,0)
     return ans
 };
