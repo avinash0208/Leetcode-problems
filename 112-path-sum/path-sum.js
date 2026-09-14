@@ -11,21 +11,40 @@
  * @param {number} targetSum
  * @return {boolean}
  */
+
+// TOP DOWN approach
+// var hasPathSum = function(root, targetSum) {
+//     let ans = false
+//     if(!root) return ans
+
+//   const findSum=(curr, sum)=>{
+//     let currSum = curr.val+sum
+//     if(!curr.left && !curr.right){
+//         if(currSum == targetSum){
+//             ans = ans|| true
+//         }
+//     }
+//     curr.left && findSum(curr.left,currSum)
+//     curr.right && findSum(curr.right,currSum)
+//   }
+
+//   findSum(root,0)
+//   return ans
+// };
+
+// Bottom UP approach
 var hasPathSum = function(root, targetSum) {
-    let ans = false
-    if(!root) return ans
+    if (!root) return false;
 
-  const findSum=(curr, sum)=>{
-    let currSum = curr.val+sum
-    if(!curr.left && !curr.right){
-        if(currSum == targetSum){
-            ans = ans|| true
-        }
+    // Leaf node
+    if (!root.left && !root.right) {
+        return root.val === targetSum;
     }
-    curr.left && findSum(curr.left,currSum)
-    curr.right && findSum(curr.right,currSum)
-  }
 
-  findSum(root,0)
-  return ans
+    const remainingSum = targetSum - root.val;
+
+    return (
+        hasPathSum(root.left, remainingSum) ||
+        hasPathSum(root.right, remainingSum)
+    );
 };
