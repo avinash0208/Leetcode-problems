@@ -11,20 +11,20 @@
  * @param {number} val
  * @return {TreeNode}
  */
-var insertIntoBST = function(root, val) {
-    if(!root) return new TreeNode(val)
+// var insertIntoBST = function(root, val) {
+//     if(!root) return new TreeNode(val)
 
-    if(root.val<val){
-        root.right = insertIntoBST(root.right, val)
-    }else{
-         root.left = insertIntoBST(root.left, val)
-    }
+//     if(root.val<val){
+//         root.right = insertIntoBST(root.right, val)
+//     }else{
+//          root.left = insertIntoBST(root.left, val)
+//     }
 
-    return root
-};
+//     return root
+// };
 
 var insertIntoBST = function (root, val) {
-    if(!root) return new TreeNode(val)
+if(!root) return new TreeNode(val)
   const traverse = (root) => {
     if (root.val < val) {
       if (!root.right) {
