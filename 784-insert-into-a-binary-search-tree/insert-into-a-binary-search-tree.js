@@ -22,3 +22,25 @@ var insertIntoBST = function(root, val) {
 
     return root
 };
+
+var insertIntoBST = function (root, val) {
+    if(!root) return new TreeNode(val)
+  const traverse = (root) => {
+    if (root.val < val) {
+      if (!root.right) {
+        root.right = new TreeNode(val);
+      } else {
+        traverse(root.right);
+      }
+    } else {
+      if (!root.left) {
+        root.left = new TreeNode(val);
+      } else {
+        traverse(root.left);
+      }
+    }
+  };
+  traverse(root);
+
+  return root;
+};
